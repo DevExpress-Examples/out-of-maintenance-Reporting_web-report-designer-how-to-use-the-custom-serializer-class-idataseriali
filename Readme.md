@@ -1,8 +1,3 @@
-<!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/128604828/14.2.6%2B)
-[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T120425)
-[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
-<!-- default badges end -->
 <!-- default file list -->
 *Files to look at*:
 
@@ -13,9 +8,6 @@
 * **[XPCollectionSerializer.cs](./CS/T120425/XPCollectionSerializer.cs) (VB: [XPCollectionSerializer.vb](./VB/T120425/XPCollectionSerializer.vb))**
 <!-- default file list end -->
 # Web Report Designer - How to use the custom serializer class (IDataSerializer) to serialize the XPO data source to make it visible in the web report designer
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t120425/)**
-<!-- run online end -->
 
 
 <p>This example demonstrates how to use the custom data source component serializer class that implements the IDataSerializer interface to serialize a report's data source component. This approach is actual when you are displaying a report that uses the data source component that cannot be serialized by the report (for example, XPCollection, DataSet <em>(untyped)</em>, IList). The Web Report Designer stores only the <a href="https://documentation.devexpress.com/#XtraReports/CustomDocument2592">report definition</a>, so if the data source component is not serialized, this component cannot be restored on the callbacks. As a result, the designer's Field List and Preview will be empty.<br /><strong>Note</strong> that such data source components as <a href="https://documentation.devexpress.com/#CoreLibraries/clsDevExpressDataAccessSqlSqlDataSourcetopic">SqlDataSource</a>, <a href="https://documentation.devexpress.com/#CoreLibraries/clsDevExpressDataAccessEntityFrameworkEFDataSourcetopic">EFDataSource</a>, <a href="https://documentation.devexpress.com/#CoreLibraries/clsDevExpressDataAccessObjectBindingObjectDataSourcetopic">ObjectDataSource</a> and <a href="https://msdn.microsoft.com/en-us/library/esbykkzb%28v=vs.110%29.aspx">Typed DataSets</a> are serialized out-of-the-box, so it is not necessary to use this approach in case of using these components.<br /><br />Use the following steps to serialize your report's data source component:<br />1. Create a custom data source component serializer class that implements the IDataSerializer interface. Implement this interface's methods to save (in the Serialize method) and restore (in the Deserialize method) your data source component from the string.<br />2. Register your custom data source component serializer class when your application is started. For example, use the Application_Start event in the application's Global.asax.cs file for this purpose:</p>
